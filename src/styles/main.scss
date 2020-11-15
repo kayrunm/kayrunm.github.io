@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+
+.link {
+    position: relative;
+
+    &::after {
+        @apply block absolute left-0 bottom-0 right-0 w-full transition-all duration-100;
+        background-image: linear-gradient(to bottom,
+            theme('colors.orange.200') 0%,
+            theme('colors.orange.200') 50%,
+            theme('colors.blue.200') 50%
+        );
+        background-size: 100% 200%;
+        content: "";
+        height: 30%;
+        z-index: -1;
+    }
+
+    &:hover::after {
+        background-position: 0 100%;
+        height: 50%;
+    }
+
+    &:hover {
+        background-image: linear-gradient(to bottom,
+            transparent 30%,
+            var(--underline-color) 30%,
+            var(--underline-color) 30%,
+            var(--underline-hover) 30%,
+        );
+    }
+
+    &--external {
+        @apply font-serif font-bold text-black;
+
+        img {
+            display: inline;
+            height: .8em;
+            opacity: .6;
+            vertical-align: middle;
+            width: auto;
+        }
+    }
+}
+
+@tailwind utilities;
